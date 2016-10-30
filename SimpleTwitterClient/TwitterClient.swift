@@ -16,13 +16,13 @@ class TwitterClient: BDBOAuth1SessionManager {
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     
-    func currentAccount() {
+    func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let userDictionary = response as! NSDictionary
-            
             let user = User(dictionary: userDictionary)
+            success(user)
             }, failure: { (task: URLSessionDataTask?, error: Error) in
-                
+                failure(error)
         })
     }
     
@@ -47,9 +47,9 @@ class TwitterClient: BDBOAuth1SessionManager {
         fetchRequestToken(withPath: "/oauth/request_token", method: "GET", callbackURL: URL(string: "twitterdemo://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential?) in
             // Setup the authorization url with requestToken
             let url = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\((requestToken?.token)!)")!
+            
             // Open the url in mobile safari
             UIApplication.shared.openURL(url)
-            
             
             
             }, failure: { (error: Error?) in
@@ -62,11 +62,22 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
             
-            self.loginSuccess?()
-            
+            self.currentAccount(success: { (user: User) in
+                User.currentUser = user
+                self.loginSuccess?()
+                }, failure: { (error: Error) in
+                    self.loginFailure?(error)
+            })
             
             }, failure: { (error: Error?) in
                 self.loginFailure?(error!)
         })
+    }
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
     }
 }

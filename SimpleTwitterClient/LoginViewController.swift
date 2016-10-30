@@ -31,8 +31,6 @@ class LoginViewController: UIViewController {
             }, failure: { (error: Error) in
                 print("Error: \(error.localizedDescription)")
         })
-        
-        
     }
 
     /*

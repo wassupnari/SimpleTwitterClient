@@ -25,8 +25,8 @@ class Tweet: NSObject {
             timestamp = formatter.date(from: timestampString)
         }
         
-        retweetCount = (dictionary["retweet_count"] as! Int) ?? 0
-        favoritesCount = (dictionary["favourites_count"] as! Int) ?? 0
+//        retweetCount = (dictionary["retweet_count"] as! Int) ?? 0
+//        favoritesCount = (dictionary["favourites_count"] as! Int) ?? 0
     }
     
     class func TweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {
