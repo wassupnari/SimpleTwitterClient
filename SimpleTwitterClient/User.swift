@@ -40,14 +40,11 @@ class User: NSObject {
             
                 let defaults = UserDefaults.standard
                 let userData = defaults.object(forKey: "currentUserData") as? Data
-                
-                print("user data: \(userData)")
         
                 if let userData = userData {
                     let dictionary = try! JSONSerialization.jsonObject(with: userData, options: []) as! NSDictionary
                     _currentUser = User(dictionary: dictionary)
                 }
-                print("user data: \(userData)")
             }
             return _currentUser
         }
@@ -63,11 +60,6 @@ class User: NSObject {
                 defaults.removeObject(forKey: "currentUserData")
             }
             defaults.synchronize()
-            
-            
-            print("------- start --------")
-            print(defaults.dictionaryRepresentation().keys)
-            print("------- end --------")
         }
     }
 }

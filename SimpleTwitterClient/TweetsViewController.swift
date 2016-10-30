@@ -23,7 +23,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweets = tweets
-            print("tweets : \(tweets)")
             self.tableView.reloadData()
             }, failure: { (error: Error) in
                 print("error: \(error.localizedDescription)")
