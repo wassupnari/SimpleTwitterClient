@@ -52,9 +52,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="113" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uPm-cT-019">
-                                <frame key="frameInset" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="113" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uPm-cT-019">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="113" id="VK4-m9-VwE" customClass="TweetTableViewCell" customModule="SimpleTwitterClient" customModuleProvider="target">
@@ -76,26 +74,28 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwitterHandle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-CB-EWq">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.54869518979057585" green="0.54869518979057585" blue="0.54869518979057585" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAr-Vq-Pi7">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.54869518979057585" green="0.54869518979057585" blue="0.54869518979057585" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNL-T6-9Ep">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNL-T6-9Ep">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="D4W-CB-EWq" firstAttribute="top" secondItem="whJ-GX-DCy" secondAttribute="top" constant="8" id="4c4-Yu-06g"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YNL-T6-9Ep" secondAttribute="bottom" constant="8" id="GfB-OA-0r1"/>
                                                 <constraint firstItem="YNL-T6-9Ep" firstAttribute="leading" secondItem="JPY-L5-VYV" secondAttribute="trailing" constant="8" id="HK1-dh-fXh"/>
                                                 <constraint firstItem="JPY-L5-VYV" firstAttribute="top" secondItem="whJ-GX-DCy" secondAttribute="top" constant="8" id="IUl-vC-sKP"/>
                                                 <constraint firstItem="AAr-Vq-Pi7" firstAttribute="leading" secondItem="D4W-CB-EWq" secondAttribute="trailing" constant="8" id="MxZ-c2-u57"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JPY-L5-VYV" secondAttribute="bottom" constant="30" id="QgO-s7-8DY"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YNL-T6-9Ep" secondAttribute="trailing" constant="8" id="UPm-wb-pBH"/>
                                                 <constraint firstItem="Age-AL-mJH" firstAttribute="top" secondItem="whJ-GX-DCy" secondAttribute="top" constant="8" id="a1N-Xk-fHb"/>
                                                 <constraint firstItem="Age-AL-mJH" firstAttribute="leading" secondItem="JPY-L5-VYV" secondAttribute="trailing" constant="8" id="dE1-4m-Kef"/>
@@ -117,6 +117,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uPm-cT-019" firstAttribute="top" secondItem="kZm-Q5-pE8" secondAttribute="top" id="BTf-Fj-Ts0"/>
+                            <constraint firstAttribute="trailing" secondItem="uPm-cT-019" secondAttribute="trailing" id="MK8-ql-1Jn"/>
+                            <constraint firstItem="DZ2-jp-sz6" firstAttribute="top" secondItem="uPm-cT-019" secondAttribute="bottom" id="gsc-eY-Sev"/>
+                            <constraint firstItem="uPm-cT-019" firstAttribute="leading" secondItem="kZm-Q5-pE8" secondAttribute="leading" id="sjl-3V-1vX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BjR-Y0-Zhu">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="SrC-nD-O2X">
