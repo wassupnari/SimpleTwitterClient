@@ -105,6 +105,13 @@
                                                 <constraint firstItem="JPY-L5-VYV" firstAttribute="leading" secondItem="whJ-GX-DCy" secondAttribute="leading" constant="8" id="v0t-VR-Q3n"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="profileImage" destination="JPY-L5-VYV" id="MbP-dv-StV"/>
+                                            <outlet property="timeStamp" destination="AAr-Vq-Pi7" id="9lR-V2-mSd"/>
+                                            <outlet property="tweetBody" destination="YNL-T6-9Ep" id="vAM-RC-UqS"/>
+                                            <outlet property="userHandle" destination="D4W-CB-EWq" id="bQf-tl-GZQ"/>
+                                            <outlet property="userName" destination="Age-AL-mJH" id="Pxp-de-9OF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -118,6 +125,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="uPm-cT-019" id="B0Q-FZ-Mqa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdR-jp-nLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
