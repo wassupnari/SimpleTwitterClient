@@ -10,8 +10,15 @@ import UIKit
 
 class TweetsViewController: UIViewController {
 
+    var tweets = [Tweet]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            }, failure: { (error: Error) in
+                
+        })
 
         // Do any additional setup after loading the view.
     }
