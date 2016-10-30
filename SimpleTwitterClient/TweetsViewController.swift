@@ -1,15 +1,14 @@
 //
-//  LoginViewController.swift
+//  TweetsViewController.swift
 //  SimpleTwitterClient
 //
-//  Created by Nari Shin on 10/27/16.
+//  Created by Nari Shin on 10/29/16.
 //  Copyright © 2016 Nari Shin. All rights reserved.
 //
 
 import UIKit
-import BDBOAuth1Manager
 
-class LoginViewController: UIViewController {
+class TweetsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,18 +21,6 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onLoginButtonClicked(_ sender: AnyObject) {
-        
-        TwitterClient.sharedInstance?.login(success: {
-            print("Logged in!")
-            
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            }, failure: { (error: Error) in
-                print("Error: \(error.localizedDescription)")
-        })
-        
-        
-    }
 
     /*
     // MARK: - Navigation
@@ -45,5 +32,4 @@ class LoginViewController: UIViewController {
     }
     */
 
-    
 }
