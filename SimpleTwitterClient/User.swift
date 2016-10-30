@@ -14,7 +14,6 @@ class User: NSObject {
     var screenname: String?
     var profileUrl: URL?
     var tagline: String?
-    
     var dictionary: NSDictionary?
 
     init(dictionary: NSDictionary) {
@@ -35,35 +34,38 @@ class User: NSObject {
     class var currentUser: User? {
         // Create computed properties
         get {
-            
             if _currentUser == nil {
             
                 let defaults = UserDefaults.standard
-            
                 let userData = defaults.object(forKey: "currentUserData") as? Data
+                
+                print("user data: \(userData)")
         
                 if let userData = userData {
-                    let dictionary = try! JSONSerialization.data(withJSONObject: userData, options: []) as! NSDictionary
-                
+                    let dictionary = try! JSONSerialization.jsonObject(with: userData, options: []) as! NSDictionary
                     _currentUser = User(dictionary: dictionary)
-                
                 }
+                print("user data: \(userData)")
             }
             return _currentUser
         }
         
         set(user) {
+            _currentUser = user
             let defaults = UserDefaults.standard
             
             if let user = user {
-                let data = try! JSONSerialization.data(withJSONObject: user.dictionary, options: [])
+                let data = try! JSONSerialization.data(withJSONObject: user.dictionary!, options: [])
                 defaults.set(data, forKey: "currentUserData")
-                
             } else {
-                defaults.set(nil, forKey: "currentUserData")
+                defaults.removeObject(forKey: "currentUserData")
             }
-            
             defaults.synchronize()
+            
+            
+            print("------- start --------")
+            print(defaults.dictionaryRepresentation().keys)
+            print("------- end --------")
         }
     }
 }

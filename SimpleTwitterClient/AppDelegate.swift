@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if User.currentUser != nil {
-            
+            print("There's current user")
+        } else {
+            print("There's no current user")
         }
         return true
     }
