@@ -15,24 +15,32 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var userHandle: UILabel!
     @IBOutlet weak var tweetBody: UILabel!
     
-    var userImage: UIImage!
-    var userNameString: String!
-    var userHandleString: String!
-    var tweetBodyString: String!
+    var tweet: Tweet!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if let imageUrl = tweet.user?.profileUrl {
+            userImageView.setImageWith(imageUrl)
+        }
+        userName.text = tweet.user?.name
+        userHandle.text = "@" + (tweet.user?.screenname)!
+        tweetBody.text = tweet.text
+
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    @IBAction func onCancelClicked(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

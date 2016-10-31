@@ -111,7 +111,7 @@
                                             <outlet property="tweetBody" destination="YNL-T6-9Ep" id="vAM-RC-UqS"/>
                                             <outlet property="userHandle" destination="D4W-CB-EWq" id="bQf-tl-GZQ"/>
                                             <outlet property="userName" destination="Age-AL-mJH" id="Pxp-de-9OF"/>
-                                            <segue destination="znT-Dh-qWU" kind="showDetail" id="crv-Zh-JX7"/>
+                                            <segue destination="i1g-WG-qGf" kind="showDetail" identifier="tweetDetailSegue" id="crv-Zh-JX7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -263,6 +263,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9WH-Nb-50e">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Nml-8a-0cd">
+                            <connections>
+                                <action selector="onCancelClicked:" destination="znT-Dh-qWU" id="bAO-do-H3x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tweetBody" destination="FgX-VI-TAh" id="vam-8X-1Il"/>
                         <outlet property="userHandle" destination="WXl-8n-IkC" id="ber-oq-YY3"/>
@@ -271,6 +278,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9j-wb-7Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3640.8000000000002" y="621.13943028485767"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wME-w8-eDA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i1g-WG-qGf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B0I-5m-J0r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="znT-Dh-qWU" kind="relationship" relationship="rootViewController" id="nPK-no-RmY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOq-o8-InO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2701.5999999999999" y="621.13943028485767"/>
         </scene>
