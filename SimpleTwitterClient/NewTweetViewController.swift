@@ -10,6 +10,8 @@ import UIKit
 
 class NewTweetViewController: UIViewController {
 
+    @IBOutlet weak var newTweetText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +21,20 @@ class NewTweetViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onCancelClicked(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onTweetClicked(_ sender: AnyObject) {
+        print("New tweet clicked, msg : \(newTweetText.text!)")
+        TwitterClient.sharedInstance?.composeNewTweet(tweetMessage: newTweetText.text!, success: {
+            print("new tweet success")
+            self.dismiss(animated: true, completion: nil)
+            }, failure: { (error: Error) in
+                print("Error: \(error.localizedDescription)")
+        })
     }
     
 

@@ -167,9 +167,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="XwX-xH-ZQg">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="F60-a4-Dsh"/>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="9xx-re-0SM"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="F60-a4-Dsh">
+                            <connections>
+                                <action selector="onCancelClicked:" destination="sOd-cf-QPi" id="Ujb-oN-E8e"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="9xx-re-0SM">
+                            <connections>
+                                <action selector="onTweetClicked:" destination="sOd-cf-QPi" id="Ayx-8c-GD5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="newTweetText" destination="aSh-8i-95O" id="IpT-6n-g4D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETL-7j-rRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
