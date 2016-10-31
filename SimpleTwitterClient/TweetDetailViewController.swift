@@ -9,6 +9,17 @@
 import UIKit
 
 class TweetDetailViewController: UIViewController {
+    
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userHandle: UILabel!
+    @IBOutlet weak var tweetBody: UILabel!
+    
+    var userImage: UIImage!
+    var userNameString: String!
+    var userHandleString: String!
+    var tweetBodyString: String!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

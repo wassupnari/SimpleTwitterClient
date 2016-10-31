@@ -111,6 +111,7 @@
                                             <outlet property="tweetBody" destination="YNL-T6-9Ep" id="vAM-RC-UqS"/>
                                             <outlet property="userHandle" destination="D4W-CB-EWq" id="bQf-tl-GZQ"/>
                                             <outlet property="userName" destination="Age-AL-mJH" id="Pxp-de-9OF"/>
+                                            <segue destination="znT-Dh-qWU" kind="showDetail" id="crv-Zh-JX7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -262,6 +263,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tweetBody" destination="FgX-VI-TAh" id="vam-8X-1Il"/>
+                        <outlet property="userHandle" destination="WXl-8n-IkC" id="ber-oq-YY3"/>
+                        <outlet property="userImageView" destination="BBG-1q-SHg" id="zqu-a1-CHK"/>
+                        <outlet property="userName" destination="zMZ-Db-277" id="a3l-gj-qGv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9j-wb-7Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
