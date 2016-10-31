@@ -264,12 +264,21 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtJ-4W-wAK">
                                 <state key="normal" title="Reply"/>
+                                <connections>
+                                    <action selector="onReplyClicked:" destination="znT-Dh-qWU" eventType="touchUpInside" id="AUZ-pe-zmi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-r0-dHc">
                                 <state key="normal" title="RT"/>
+                                <connections>
+                                    <action selector="onRetweetClicked:" destination="znT-Dh-qWU" eventType="touchUpInside" id="2yw-LJ-mt6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-h1-8EY">
                                 <state key="normal" title="Favorite"/>
+                                <connections>
+                                    <action selector="onFavoriteClicked:" destination="znT-Dh-qWU" eventType="touchUpInside" id="eHX-PU-tUq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

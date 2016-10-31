@@ -16,20 +16,19 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var tweetBody: UILabel!
     
     var tweet: Tweet!
+    var tweetId: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        tweetId = tweet.id
         if let imageUrl = tweet.user?.profileUrl {
             userImageView.setImageWith(imageUrl)
         }
         userName.text = tweet.user?.name
         userHandle.text = "@" + (tweet.user?.screenname)!
         tweetBody.text = tweet.text
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +40,20 @@ class TweetDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onReplyClicked(_ sender: AnyObject) {
+        
+    }
+    
+    @IBAction func onRetweetClicked(_ sender: AnyObject) {
+        TwitterClient.sharedInstance?.retweet(tweetId: self.tweetId, success: {
+            print("RT success")
+            }, failure: { (error: Error) in
+                print("Error: \(error.localizedDescription)")
+        })
+    }
+    
+    @IBAction func onFavoriteClicked(_ sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 
