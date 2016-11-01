@@ -27,6 +27,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        
         get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let dictionaries = response as! [NSDictionary]
             
@@ -79,5 +80,64 @@ class TwitterClient: BDBOAuth1SessionManager {
         deauthorize()
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
+    }
+    
+    func composeNewTweet(tweetMessage : String, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let params: NSDictionary = [
+            "status" : tweetMessage
+        ]
+        
+        post("1.1/statuses/update.json", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response:Any?) in
+                success()
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print("error: \(error.localizedDescription)")
+                failure(error)
+        });
+
+//        get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+//            print("I got tweets")
+//            
+//            }, failure: { (task: URLSessionDataTask?, error: Error) in
+//                failure(error)
+//        })
+    }
+    
+    func reply(tweetMessage : String, tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let params: NSDictionary = [
+            "status" : tweetMessage,
+            "in_reply_to_status_id": tweetId
+        ]
+        self.post("1.1/statuses/update.json", parameters: params, success: { (task:URLSessionDataTask, response:Any?) in
+                let tweet = response as! NSDictionary
+                print("post success \(tweet)")
+                success()
+            }, failure: { (task:URLSessionDataTask?, error:Error) in
+                print("error: \(error.localizedDescription)")
+                failure(error)
+        });
+    }
+    
+    func retweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let params: NSDictionary = [
+            "id" : tweetId
+        ]
+        self.post("1.1/statuses/retweet/\(tweetId).json", parameters: params, success: { (task:URLSessionDataTask, response:Any?) in
+                success()
+            }, failure: { (task:URLSessionDataTask?, error:Error) in
+                print("error: \(error.localizedDescription)")
+                failure(error)
+        });
+    }
+    
+    func favorite(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let params: NSDictionary = [
+            "id" : tweetId
+        ]
+        self.post("1.1/favorites/create.json", parameters: params, success: { (task:URLSessionDataTask, response:Any?) in
+                success()
+            }, failure: { (task:URLSessionDataTask?, error:Error) in
+                print("error: \(error.localizedDescription)")
+                failure(error)
+        });
     }
 }

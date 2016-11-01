@@ -79,6 +79,21 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
     }
+    
+    /*
+     * Pass data to another viewController
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tweetDetailSegue" {
+            let navigationViewController = segue.destination as! UINavigationController
+            let detailViewController = navigationViewController.viewControllers[0] as! TweetDetailViewController
+        
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                // do the work here
+                detailViewController.tweet = tweets[indexPath.row]
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
