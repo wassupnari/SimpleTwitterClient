@@ -47,6 +47,7 @@ class TweetDetailViewController: UIViewController {
     @IBAction func onRetweetClicked(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.retweet(tweetId: self.tweetId, success: {
             print("RT success")
+            self.dismiss(animated: true, completion: nil)
             }, failure: { (error: Error) in
                 print("Error: \(error.localizedDescription)")
         })
@@ -55,6 +56,7 @@ class TweetDetailViewController: UIViewController {
     @IBAction func onFavoriteClicked(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.favorite(tweetId: self.tweetId, success: {
             print("Favorite success")
+            self.dismiss(animated: true, completion: nil)
             }, failure: { (error:Error) in
                 print("Error: \(error.localizedDescription)")
         })
