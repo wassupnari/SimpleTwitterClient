@@ -68,7 +68,7 @@
                                                         <constraint firstAttribute="width" constant="70" id="hYQ-A8-7kZ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Age-AL-mJH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Age-AL-mJH">
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -78,7 +78,7 @@
                                                     <color key="textColor" red="0.54869518979057585" green="0.54869518979057585" blue="0.54869518979057585" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAr-Vq-Pi7">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAr-Vq-Pi7">
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.54869518979057585" green="0.54869518979057585" blue="0.54869518979057585" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -102,6 +102,7 @@
                                                 <constraint firstItem="D4W-CB-EWq" firstAttribute="leading" secondItem="Age-AL-mJH" secondAttribute="trailing" constant="8" id="f4r-FN-qWS"/>
                                                 <constraint firstItem="YNL-T6-9Ep" firstAttribute="top" secondItem="AAr-Vq-Pi7" secondAttribute="bottom" constant="8" id="j9O-Mw-bxx"/>
                                                 <constraint firstItem="AAr-Vq-Pi7" firstAttribute="top" secondItem="whJ-GX-DCy" secondAttribute="top" constant="8" id="mVb-m3-t9E"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AAr-Vq-Pi7" secondAttribute="trailing" constant="8" id="p1d-QC-Uif"/>
                                                 <constraint firstItem="JPY-L5-VYV" firstAttribute="leading" secondItem="whJ-GX-DCy" secondAttribute="leading" constant="8" id="v0t-VR-Q3n"/>
                                             </constraints>
                                         </tableViewCellContentView>
