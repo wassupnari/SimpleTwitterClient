@@ -59,7 +59,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VK4-m9-VwE" id="whJ-GX-DCy">
-                                            <frame key="frameInset" width="375" height="112.5"/>
+                                            <frame key="frameInset" width="375" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPY-L5-VYV">
@@ -157,15 +157,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's happening?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-8i-95O">
-                                <frame key="frameInset" minX="16" minY="123" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's Happening?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V2Y-pY-13g">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="X5V-LJ-Ibp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V2Y-pY-13g" firstAttribute="leading" secondItem="3be-i9-AbU" secondAttribute="leading" constant="16" id="82C-nP-eUp"/>
+                            <constraint firstItem="V2Y-pY-13g" firstAttribute="top" secondItem="wcc-oZ-Tqt" secondAttribute="bottom" constant="37" id="dAv-tR-k71"/>
+                            <constraint firstAttribute="trailing" secondItem="V2Y-pY-13g" secondAttribute="trailing" constant="16" id="uAf-Bp-4HM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XwX-xH-ZQg">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="F60-a4-Dsh">
@@ -180,7 +186,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="newTweetText" destination="aSh-8i-95O" id="IpT-6n-g4D"/>
+                        <outlet property="tweetMessage" destination="V2Y-pY-13g" id="kZP-7t-iv9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETL-7j-rRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,6 +272,7 @@
                                 <state key="normal" title="Reply"/>
                                 <connections>
                                     <action selector="onReplyClicked:" destination="znT-Dh-qWU" eventType="touchUpInside" id="AUZ-pe-zmi"/>
+                                    <segue destination="LAk-gs-jAA" kind="presentation" identifier="replySegue" id="rDd-a6-dMI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-r0-dHc">
@@ -321,6 +328,48 @@
             </objects>
             <point key="canvasLocation" x="3640.8000000000002" y="621.13943028485767"/>
         </scene>
+        <!--Reply View Controller-->
+        <scene sceneID="UhD-FN-S9i">
+            <objects>
+                <viewController id="fE1-R7-lDV" customClass="ReplyViewController" customModule="SimpleTwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="er8-ca-b5p"/>
+                        <viewControllerLayoutGuide type="bottom" id="7oz-os-NeY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7XH-Sq-h6h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U1N-5A-MPS">
+                                <frame key="frameInset" minX="16" minY="89" width="343" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JFY-Aw-e0L">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="OlM-Nw-f5u">
+                            <connections>
+                                <action selector="onCancelClicked:" destination="fE1-R7-lDV" id="5R0-aU-Dfz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Reply" id="Bn2-4i-fHD">
+                            <connections>
+                                <action selector="onReplyClicked:" destination="fE1-R7-lDV" id="WyG-ya-EiN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="replyBody" destination="U1N-5A-MPS" id="UST-FA-6QZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LxH-4A-Lpd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5368.8000000000002" y="620.23988005997012"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="wME-w8-eDA">
             <objects>
@@ -338,6 +387,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOq-o8-InO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2701.5999999999999" y="621.13943028485767"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vMM-hy-p6D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LAk-gs-jAA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Op1-Eu-dId">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fE1-R7-lDV" kind="relationship" relationship="rootViewController" id="ARH-oK-FC5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bLe-Fl-g6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4522" y="621"/>
         </scene>
     </scenes>
 </document>

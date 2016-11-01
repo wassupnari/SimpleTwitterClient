@@ -53,7 +53,23 @@ class TweetDetailViewController: UIViewController {
     }
     
     @IBAction func onFavoriteClicked(_ sender: AnyObject) {
+        TwitterClient.sharedInstance?.favorite(tweetId: self.tweetId, success: {
+            print("Favorite success")
+            }, failure: { (error:Error) in
+                print("Error: \(error.localizedDescription)")
+        })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "replySegue" {
+            let navigationViewController = segue.destination as! UINavigationController
+            let targetController = navigationViewController.viewControllers[0] as! ReplyViewController
+            
+            targetController.targetHandel = "@" + (tweet.user?.screenname)! + " "
+            targetController.tweetId = tweet.id
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

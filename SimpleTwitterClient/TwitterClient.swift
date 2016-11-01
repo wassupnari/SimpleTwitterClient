@@ -88,12 +88,18 @@ class TwitterClient: BDBOAuth1SessionManager {
         ]
         
         post("1.1/statuses/update.json", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response:Any?) in
-                //let tweet = response as! NSDictionary
                 success()
             }, failure: { (task: URLSessionDataTask?, error: Error) in
                 print("error: \(error.localizedDescription)")
                 failure(error)
         });
+
+//        get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+//            print("I got tweets")
+//            
+//            }, failure: { (task: URLSessionDataTask?, error: Error) in
+//                failure(error)
+//        })
     }
     
     func reply(tweetMessage : String, tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {

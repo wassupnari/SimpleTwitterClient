@@ -1,28 +1,26 @@
 //
-//  NewTweetViewController.swift
+//  ReplyViewController.swift
 //  SimpleTwitterClient
 //
-//  Created by Nari Shin on 10/30/16.
+//  Created by Nari Shin on 10/31/16.
 //  Copyright © 2016 Nari Shin. All rights reserved.
 //
 
 import UIKit
 
-class NewTweetViewController: UIViewController, UITextViewDelegate {
-
-    @IBOutlet weak var tweetMessage: UITextView!
+class ReplyViewController: UIViewController {
     
+    @IBOutlet weak var replyBody: UITextView!
+    
+    var targetHandel: String?
+    var tweetId: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        tweetMessage.layer.cornerRadius = 3
-        tweetMessage.layer.borderColor = UIColor.gray.cgColor
-        tweetMessage.layer.borderWidth = 1
-        tweetMessage.setContentOffset(CGPoint.zero, animated: false)
-        tweetMessage.delegate = self
         self.automaticallyAdjustsScrollViewInsets = false
+        replyBody.text = targetHandel
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,18 +31,16 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     @IBAction func onCancelClicked(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func onTweetClicked(_ sender: AnyObject) {
-        print("New tweet clicked, msg : \(tweetMessage.text!)")
-        TwitterClient.sharedInstance?.composeNewTweet(tweetMessage: tweetMessage.text!, success: {
-            print("new tweet success")
+
+    @IBAction func onReplyClicked(_ sender: AnyObject) {
+        TwitterClient.sharedInstance?.reply(tweetMessage: self.replyBody.text, tweetId: tweetId!, success: {
+            print("reply success")
             self.dismiss(animated: true, completion: nil)
             }, failure: { (error: Error) in
-                print("Error: \(error.localizedDescription)")
+                print("Error : \(error.localizedDescription)")
         })
     }
-    
-
+  
     /*
     // MARK: - Navigation
 
